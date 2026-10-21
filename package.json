@@ -1,0 +1,19 @@
+{
+  "name": "simple-php2shell-checker",
+  "version": "1.0.0",
+  "description": "Passive black-box fingerprinting audit tool for PHP2Shell (CVE-2026-109618 & CVE-2026-109619)",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "dev": "npx wrangler pages dev public"
+  },
+  "keywords": [
+    "php2shell",
+    "cve-2026-109618",
+    "cve-2026-109619",
+    "security-scanner",
+    "cloudflare-pages"
+  ],
+  "author": "Lechu77",
+  "license": "GPL-3.0"
+}
