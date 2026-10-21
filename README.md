@@ -65,16 +65,30 @@ npm test
 
 ## Despliegue en Cloudflare Pages
 
-### Opción 1: Git Integration (Recomendado)
-1. Conecta este repositorio en el panel de Cloudflare Dashboard -> **Workers & Pages**.
-2. Selecciona **Create application** -> **Pages** -> **Connect to Git**.
-3. Parámetros de compilación:
-   - **Framework preset**: None
-   - **Build command**: (dejar en blanco)
-   - **Build output directory**: `public`
-4. Cloudflare detectará automáticamente la carpeta `/functions/` e instanciará las Pages Functions sin configuración adicional.
+Para instrucciones paso a paso detalladas, consulta la [Guía de Despliegue (DEPLOY.md)](DEPLOY.md).
 
-### Opción 2: Wrangler CLI
+### 1. Despliegue Directo vía CLI (Wrangler)
 ```bash
-npx wrangler pages deploy public
+# Iniciar sesión en Cloudflare (solo primera vez)
+npx wrangler login
+
+# Desplegar aplicación y Pages Functions
+npm run deploy
+```
+
+### 2. Despliegue Automático vía Git Integration (Dashboard)
+1. Conecta este repositorio en [Cloudflare Dashboard](https://dash.cloudflare.com/) -> **Workers & Pages** -> **Create application** -> **Pages** -> **Connect to Git**.
+2. Parámetros de compilación:
+   - **Framework preset**: `None`
+   - **Build command**: *(dejar en blanco)*
+   - **Build output directory**: `public`
+3. Cloudflare detectará automáticamente la carpeta `/functions/api/check.js` y montará el endpoint `/api/check`.
+
+### 3. Desarrollo y Pruebas Locales
+```bash
+# Levantar servidor de desarrollo local con emulación de Pages Functions
+npm run dev
+
+# Ejecutar suite de pruebas
+npm test
 ```
