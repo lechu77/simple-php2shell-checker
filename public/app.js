@@ -1,6 +1,6 @@
 /**
- * PHP2Shell Auditor - Frontend Vanilla JavaScript
- * Zero-dependency, sysadmin-optimized client logic.
+ * PHP2Shell Crypt - Frontend Vanilla JavaScript
+ * Gothic Neon Occult Black-Box Telemetry Client.
  */
 
 // Application State
@@ -36,7 +36,7 @@ const resultsTbody = document.getElementById('results-tbody');
 const resultsCountBadge = document.getElementById('results-count-badge');
 const emptyState = document.getElementById('empty-state');
 
-// Sample Target URLs for quick testing
+// Sample Target URLs for immediate divination
 const SAMPLE_URLS = [
   'https://httpbin.org/status/200',
   'https://www.php.net',
@@ -62,16 +62,16 @@ function getParsedUrls() {
 function updateUrlCounter() {
   const urls = getParsedUrls();
   const count = urls.length;
-  urlCountBadge.textContent = `${count} / 10 URLs`;
+  urlCountBadge.textContent = `${count} / 10 TARGETS SUMMONED`;
 
   if (count > 10) {
-    urlCountBadge.className = 'px-2 py-0.5 text-xs font-mono font-semibold rounded bg-red-950 text-red-400 border border-red-800';
+    urlCountBadge.className = 'px-2.5 py-0.5 text-xs font-mono font-bold rounded bg-blood-950 text-blood-500 border border-blood-600 shadow-md shadow-blood-950 animate-pulse';
     auditBtn.disabled = true;
-    showAlert('Se ha superado el límite de 10 URLs por lote.', 'error');
+    showAlert('Target quota exceeded: Maximum of 10 souls permitted per ritual.', 'error');
   } else {
     urlCountBadge.className = count === 0
-      ? 'px-2 py-0.5 text-xs font-mono font-medium rounded bg-slate-800 text-slate-400 border border-slate-700'
-      : 'px-2 py-0.5 text-xs font-mono font-semibold rounded bg-cyan-950 text-cyan-300 border border-cyan-800';
+      ? 'px-2.5 py-0.5 text-xs font-mono font-medium rounded bg-crypt-900 text-slate-500 border border-crypt-800'
+      : 'px-2.5 py-0.5 text-xs font-mono font-bold rounded bg-blood-950 text-blood-500 border border-blood-900';
     auditBtn.disabled = count === 0 || isAuditing;
     if (count <= 10 && statusAlert && !isAuditing) {
       hideAlert();
@@ -88,11 +88,11 @@ function showAlert(message, type = 'error') {
   statusAlert.classList.remove('hidden');
 
   if (type === 'error') {
-    statusAlert.className = 'mb-4 p-3 rounded border text-sm font-mono flex items-start gap-2 bg-red-950/80 border-red-800 text-red-200';
+    statusAlert.className = 'mb-4 p-3.5 rounded border text-xs font-mono flex items-start gap-2 bg-blood-950 border-blood-600 text-red-200 shadow-lg shadow-blood-950 box-neon-blood';
   } else if (type === 'warning') {
-    statusAlert.className = 'mb-4 p-3 rounded border text-sm font-mono flex items-start gap-2 bg-amber-950/80 border-amber-800 text-amber-200';
+    statusAlert.className = 'mb-4 p-3.5 rounded border text-xs font-mono flex items-start gap-2 bg-hellfire-950 border-hellfire-400 text-amber-200 shadow-lg shadow-hellfire-950 box-neon-amber';
   } else {
-    statusAlert.className = 'mb-4 p-3 rounded border text-sm font-mono flex items-start gap-2 bg-slate-800 border-slate-700 text-slate-200';
+    statusAlert.className = 'mb-4 p-3.5 rounded border text-xs font-mono flex items-start gap-2 bg-crypt-900 border-crypt-700 text-slate-300 shadow-lg shadow-black';
   }
 }
 
@@ -110,12 +110,12 @@ function setLoading(loading) {
     urlInput.disabled = true;
     btnSpinner.classList.remove('hidden');
     btnIcon.classList.add('hidden');
-    btnText.textContent = 'Auditando perfiles...';
+    btnText.textContent = 'DIVINING TARGETS...';
   } else {
     urlInput.disabled = false;
     btnSpinner.classList.add('hidden');
     btnIcon.classList.remove('hidden');
-    btnText.textContent = 'Iniciar Auditoría';
+    btnText.textContent = 'EXECUTE RITUAL';
     updateUrlCounter();
   }
 }
@@ -127,33 +127,33 @@ function getStatusBadge(status) {
   switch (status) {
     case 'Vulnerable':
       return `
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-bold bg-red-950/80 text-red-400 border border-red-700/80 shadow-sm shadow-red-950">
-          <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-          VULNERABLE
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-black bg-blood-950 text-blood-500 border border-blood-600 shadow-lg shadow-blood-950 neon-blood">
+          <span class="w-1.5 h-1.5 rounded-full bg-blood-500 animate-occult-pulse"></span>
+          ☠ VULNERABLE
         </span>`;
     case 'Mitigated by WAF':
       return `
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-bold bg-amber-950/80 text-amber-300 border border-amber-700/80 shadow-sm shadow-amber-950">
-          <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          MITIGATED BY WAF
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-black bg-hellfire-950 text-hellfire-400 border border-hellfire-400/80 shadow-lg shadow-hellfire-950 neon-amber">
+          <svg class="w-3.5 h-3.5 text-hellfire-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          🛡 MITIGATED BY WAF
         </span>`;
     case 'Patched':
       return `
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-700/80 shadow-sm shadow-emerald-950">
-          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-          PATCHED
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-black bg-toxic-950 text-toxic-400 border border-toxic-400/80 shadow-lg shadow-toxic-950 neon-toxic">
+          <svg class="w-3.5 h-3.5 text-toxic-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          ☩ PATCHED
         </span>`;
     case 'Opaque':
       return `
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-bold bg-purple-950/80 text-purple-300 border border-purple-700/80 shadow-sm shadow-purple-950">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-black bg-eldritch-950 text-purple-400 border border-eldritch-400/80 shadow-lg shadow-eldritch-950 neon-purple">
           <svg class="w-3.5 h-3.5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg>
-          OPAQUE (PHP)
+          👁 OPAQUE (PHP)
         </span>`;
     case 'Not PHP':
     default:
       return `
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-medium bg-slate-800 text-slate-300 border border-slate-700">
-          NOT PHP
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-medium bg-crypt-900 text-slate-400 border border-crypt-700">
+          🕇 NOT PHP
         </span>`;
   }
 }
@@ -189,14 +189,14 @@ function renderResultsTable() {
     return matchesStatus && matchesSearch;
   });
 
-  resultsCountBadge.textContent = `${filtered.length} de ${currentResults.length} mostrados`;
+  resultsCountBadge.textContent = `${filtered.length} of ${currentResults.length} souls`;
   resultsTbody.innerHTML = '';
 
   if (filtered.length === 0) {
     resultsTbody.innerHTML = `
       <tr>
-        <td colspan="6" class="px-4 py-8 text-center text-sm font-mono text-slate-500 bg-slate-900/30">
-          No se encontraron resultados para los filtros seleccionados.
+        <td colspan="6" class="px-4 py-8 text-center text-xs font-mono text-slate-600 bg-black/50">
+          No condemned souls match current filter criteria.
         </td>
       </tr>`;
     return;
@@ -204,30 +204,30 @@ function renderResultsTable() {
 
   filtered.forEach((row, index) => {
     const tr = document.createElement('tr');
-    tr.className = 'border-b border-slate-800/80 hover:bg-slate-800/30 transition-colors text-xs font-mono';
+    tr.className = 'border-b border-crypt-800/80 hover:bg-crypt-850/60 transition-colors text-xs font-mono';
 
     const wafDisplay = row.wafDetected && row.wafDetected.length > 0
-      ? row.wafDetected.map(w => `<span class="inline-block px-1.5 py-0.5 rounded bg-slate-800 text-cyan-300 border border-slate-700 mr-1 mb-1">${escapeHtml(w)}</span>`).join('')
-      : '<span class="text-slate-500">Ninguno</span>';
+      ? row.wafDetected.map(w => `<span class="inline-block px-1.5 py-0.5 rounded bg-crypt-900 text-hellfire-400 border border-hellfire-950 mr-1 mb-1 shadow-sm font-semibold">${escapeHtml(w)}</span>`).join('')
+      : '<span class="text-slate-600">None detected</span>';
 
     const versionDisplay = row.phpVersion
-      ? `<span class="px-1.5 py-0.5 rounded font-bold ${row.isEol ? 'bg-red-950/80 text-red-400 border border-red-800' : 'bg-slate-800 text-slate-200 border border-slate-700'}">${escapeHtml(row.phpVersion)}${row.isEol ? ' (EOL)' : ''}</span>`
-      : '<span class="text-slate-500 italic">Oculta / No expuesta</span>';
+      ? `<span class="px-2 py-0.5 rounded font-bold ${row.isEol ? 'bg-blood-950 text-blood-500 border border-blood-800 neon-blood' : 'bg-crypt-900 text-slate-200 border border-crypt-700'}">${escapeHtml(row.phpVersion)}${row.isEol ? ' (EOL)' : ''}</span>`
+      : '<span class="text-slate-600 italic">Hidden / Masked</span>';
 
     const httpBadgeClass = typeof row.httpStatus === 'number' && row.httpStatus >= 200 && row.httpStatus < 300
-      ? 'text-emerald-400'
+      ? 'text-toxic-400'
       : (typeof row.httpStatus === 'number' && row.httpStatus >= 300 && row.httpStatus < 400
         ? 'text-cyan-400'
-        : 'text-amber-400');
+        : 'text-blood-500');
 
     tr.innerHTML = `
-      <td class="px-4 py-3 text-slate-400 select-none">${index + 1}</td>
+      <td class="px-4 py-3 text-slate-600 select-none">${index + 1}</td>
       <td class="px-4 py-3 font-medium text-slate-200 max-w-xs md:max-w-md truncate" title="${escapeHtml(row.url)}">
-        <div class="flex items-center gap-1.5">
-          <a href="${escapeHtml(row.url)}" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 underline decoration-slate-700 hover:decoration-cyan-400 transition-colors truncate">
+        <div class="flex items-center gap-2">
+          <a href="${escapeHtml(row.url)}" target="_blank" rel="noopener noreferrer" class="hover:text-blood-500 underline decoration-slate-800 hover:decoration-blood-500 transition-colors truncate">
             ${escapeHtml(row.url)}
           </a>
-          <button onclick="navigator.clipboard.writeText('${escapeHtml(row.url)}')" title="Copiar URL" class="text-slate-500 hover:text-slate-300 p-0.5">
+          <button onclick="navigator.clipboard.writeText('${escapeHtml(row.url)}')" title="Copy URL" class="text-slate-600 hover:text-blood-500 p-0.5 transition-colors">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
           </button>
         </div>
@@ -243,7 +243,7 @@ function renderResultsTable() {
       </td>
       <td class="px-4 py-3 whitespace-nowrap font-bold ${httpBadgeClass}">
         ${escapeHtml(String(row.httpStatus))}
-        <span class="text-[10px] font-normal text-slate-500 ml-1">(${row.responseTimeMs || 0}ms)</span>
+        <span class="text-[10px] font-normal text-slate-600 ml-1">(${row.responseTimeMs || 0}ms)</span>
       </td>
     `;
 
@@ -269,7 +269,7 @@ function escapeHtml(str) {
  */
 function exportResultsToCsv() {
   if (!currentResults || currentResults.length === 0) {
-    showAlert('No hay resultados disponibles para exportar.', 'warning');
+    showAlert('No divination telemetry available to export.', 'warning');
     return;
   }
 
@@ -306,7 +306,7 @@ function exportResultsToCsv() {
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
   const a = document.createElement('a');
   a.href = url;
-  a.download = `php2shell-audit-${timestamp}.csv`;
+  a.download = `php2shell-crypt-audit-${timestamp}.csv`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -320,12 +320,12 @@ async function runAudit() {
   const urls = getParsedUrls();
 
   if (urls.length === 0) {
-    showAlert('Por favor ingresa al menos una URL para auditar.', 'warning');
+    showAlert('Please provide at least one target URL to begin divination.', 'warning');
     return;
   }
 
   if (urls.length > 10) {
-    showAlert('Máximo 10 URLs permitidas por lote.', 'error');
+    showAlert('Target quota exceeded: Maximum of 10 souls permitted per ritual.', 'error');
     return;
   }
 
@@ -362,7 +362,7 @@ async function runAudit() {
     updateMetricsDeck(data.summary);
     renderResultsTable();
   } catch (err) {
-    showAlert(`Error al ejecutar auditoría: ${err.message}`, 'error');
+    showAlert(`Ritual execution error: ${err.message}`, 'error');
   } finally {
     setLoading(false);
   }

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PHP2Shell Fingerprint Auditor — CVE-2026-109618 & CVE-2026-109619</title>
-  <meta name="description" content="Herramienta de fingerprinting pasivo black-box para auditar vulnerabilidades PHP2Shell (CVE-2026-109618 y CVE-2026-109619) en lotes de hasta 10 URLs sobre Cloudflare Pages.">
+  <title>PHP2Shell Crypt // Gothic Vulnerability Fingerprinter (CVE-2026-109618 & CVE-2026-109619)</title>
+  <meta name="description" content="Gothic neon occult black-box passive fingerprinter for PHP2Shell vulnerabilities (CVE-2026-109618 & CVE-2026-109619) on Cloudflare Pages.">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,16 +14,32 @@
       theme: {
         extend: {
           colors: {
-            terminal: {
-              black: '#080c14',
-              surface: '#0f172a',
-              card: '#141e33',
-              border: '#1e293b',
-              accent: '#38bdf8',
-              success: '#10b981',
-              warning: '#f59e0b',
-              danger: '#ef4444',
-              muted: '#64748b'
+            void: '#030305',
+            crypt: {
+              950: '#05050a',
+              900: '#0a0914',
+              850: '#100e1f',
+              800: '#19152b',
+              700: '#2b2347'
+            },
+            blood: {
+              500: '#ff003c',
+              600: '#e60036',
+              900: '#40000e',
+              950: '#200007'
+            },
+            toxic: {
+              400: '#00ff66',
+              500: '#00cc52',
+              950: '#00290a'
+            },
+            hellfire: {
+              400: '#ffaa00',
+              950: '#331e00'
+            },
+            eldritch: {
+              400: '#bd00ff',
+              950: '#260033'
             }
           }
         }
@@ -32,74 +48,79 @@
   </script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#080c14] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-black">
+<body class="bg-[#030305] text-slate-200 min-h-screen flex flex-col antialiased selection:bg-[#ff003c] selection:text-white">
 
-  <!-- Top Terminal Bar -->
-  <header class="border-b border-slate-800/80 bg-[#0c1220]/90 backdrop-blur sticky top-0 z-40">
+  <!-- Top Occult Gothic Bar -->
+  <header class="border-b border-[#241326] bg-[#07050d]/90 backdrop-blur sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="flex items-center gap-1.5">
-          <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
-          <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
-          <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-        </div>
-        <div class="h-4 w-px bg-slate-700 mx-1"></div>
-        <span class="font-mono text-xs text-cyan-400 font-semibold tracking-wider flex items-center gap-2">
-          <span>sysadmin@edge-audit:~$</span>
-          <span class="text-slate-300">./php2shell-audit --passive</span>
+        <span class="text-blood-500 font-gothic text-lg font-black tracking-widest animate-flicker">⛧</span>
+        <span class="font-mono text-xs tracking-wider uppercase flex items-center gap-2">
+          <span class="text-blood-500 font-bold">crypt://auditor@abyss:~$</span>
+          <span class="text-slate-300">./php2shell-necromancer --bulk-divination</span>
         </span>
       </div>
 
       <div class="flex items-center gap-3 text-xs font-mono">
-        <span class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          Cloudflare Pages Function Engine
+        <span class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-crypt-900 text-blood-500 border border-blood-900/80 shadow-sm shadow-blood-950">
+          <span class="w-1.5 h-1.5 rounded-full bg-blood-500 animate-occult-pulse"></span>
+          CLOUDFLARE EDGE RITUAL ENGINE
         </span>
-        <span class="text-slate-500">v1.0.0</span>
+        <span class="text-slate-500 font-bold">v1.0.0-OCCULT</span>
       </div>
     </div>
   </header>
 
-  <!-- Main Content Container -->
+  <!-- Main Catacomb Container -->
   <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full flex flex-col gap-6">
 
-    <!-- Advisory / Header Hero Card -->
-    <section class="p-5 rounded-lg border border-slate-800 bg-slate-900/60 shadow-lg relative overflow-hidden">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <!-- Hero / Grim Advisory Card -->
+    <section class="p-6 rounded-lg border border-red-950/80 bg-gradient-to-r from-crypt-950 via-[#0a0712] to-crypt-950 shadow-2xl relative overflow-hidden box-neon-blood">
+      <!-- Background Ambient Occult Rune Symbol -->
+      <div class="absolute -right-12 -bottom-12 opacity-5 select-none pointer-events-none text-9xl font-gothic text-blood-500">
+        ☠
+      </div>
+
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
         <div>
-          <div class="flex flex-wrap items-center gap-2 mb-1.5">
-            <span class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-red-950 text-red-400 border border-red-800">
-              CRITICAL ADVISORY
+          <div class="flex flex-wrap items-center gap-2 mb-2 font-mono">
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-blood-950 text-blood-500 border border-blood-600 shadow-sm shadow-blood-950 uppercase tracking-widest animate-occult-pulse">
+              ☠ CRITICAL CONDEMNATION
             </span>
-            <span class="px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-semibold bg-crypt-900 text-slate-300 border border-crypt-700">
               CVE-2026-109618
             </span>
-            <span class="px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-semibold bg-crypt-900 text-slate-300 border border-crypt-700">
               CVE-2026-109619
             </span>
-            <span class="px-2 py-0.5 rounded text-[11px] font-mono text-cyan-400 bg-cyan-950/60 border border-cyan-800">
-              Passive Black-Box Fingerprinting
+            <span class="px-2.5 py-0.5 rounded text-[11px] text-toxic-400 bg-toxic-950/80 border border-toxic-400/40">
+              PASSIVE OCCULT FINGERPRINTING
             </span>
           </div>
-          <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-            PHP2Shell Vulnerability Bulk Auditor
+
+          <h1 class="text-2xl sm:text-3xl font-gothic font-black tracking-wider text-white neon-blood">
+            PHP2SHELL // CRYPT OF VULNERABILITIES
           </h1>
-          <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-3xl">
-            Inspección perimetral no invasiva para detectar instancias PHP expuestas y mitigar riesgos antes de explotación. Concurrencia adaptativa edge (3-5 reqs), timeout estricto de 4s y reconocimiento de perímetros WAF.
+          <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-3xl font-cinzel leading-relaxed">
+            Zero-payload passive black-box divine surveillance. Exposing unpatched PHP runtimes rotting in production before adversarial shell invocation. Controlled async edge pool (3-5 reqs), strict 4.0s guillotine timeout, and perimeter ward detection.
           </p>
         </div>
 
-        <!-- Patch Reference Table Pill -->
-        <div class="bg-slate-950/80 p-3 rounded border border-slate-800 text-xs font-mono shrink-0">
-          <div class="text-slate-400 font-semibold mb-1 text-[11px] uppercase tracking-wider">Versiones Reparadas (Patched)</div>
-          <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-slate-300">
-            <div><span class="text-emerald-400 font-bold">8.5:</span> &ge; 8.5.12</div>
-            <div><span class="text-emerald-400 font-bold">8.4:</span> &ge; 8.4.27</div>
-            <div><span class="text-emerald-400 font-bold">8.3:</span> &ge; 8.3.36</div>
-            <div><span class="text-emerald-400 font-bold">8.2:</span> &ge; 8.2.35</div>
+        <!-- Consecrated Branches Reference Card -->
+        <div class="bg-black/90 p-4 rounded-lg border border-red-900/60 font-mono text-xs shrink-0 shadow-lg shadow-black">
+          <div class="text-blood-500 font-gothic font-bold mb-2 text-xs uppercase tracking-widest flex items-center gap-1.5">
+            <span>☩</span>
+            <span>CONSECRATED VERSIONS (PATCHED)</span>
           </div>
-          <div class="text-[10px] text-red-400 mt-1.5 border-t border-slate-800 pt-1">
-            &lt; 8.2 (EOL): Sin parches oficiales (Vulnerable)
+          <div class="grid grid-cols-2 gap-x-5 gap-y-1.5 text-slate-300">
+            <div><span class="text-toxic-400 font-bold">8.5:</span> &ge; 8.5.12</div>
+            <div><span class="text-toxic-400 font-bold">8.4:</span> &ge; 8.4.27</div>
+            <div><span class="text-toxic-400 font-bold">8.3:</span> &ge; 8.3.36</div>
+            <div><span class="text-toxic-400 font-bold">8.2:</span> &ge; 8.2.35</div>
+          </div>
+          <div class="text-[11px] text-red-400 font-semibold mt-2.5 border-t border-red-950 pt-1.5 flex items-center gap-1">
+            <span class="text-red-500">☠</span>
+            <span>&lt; 8.2 (EOL): Condemned &amp; unpatched (Vulnerable)</span>
           </div>
         </div>
       </div>
@@ -112,20 +133,21 @@
     </div>
 
     <!-- Input Section Card -->
-    <section class="bg-slate-900/60 border border-slate-800 rounded-lg p-5 shadow-lg">
-      <div class="flex items-center justify-between mb-2">
-        <label for="url-input" class="text-xs font-mono font-semibold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-          <span>URLs Objetivo (Hasta 10 por lote)</span>
+    <section class="bg-[#080710]/80 border border-crypt-800 rounded-lg p-5 shadow-xl relative backdrop-blur">
+      <div class="flex items-center justify-between mb-2.5">
+        <label for="url-input" class="text-xs font-mono font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+          <span class="text-blood-500">⚡</span>
+          <span>TARGET SOULS // VICTIMS (UP TO 10 URLS)</span>
         </label>
         <div class="flex items-center gap-2">
-          <span id="url-count-badge" class="px-2 py-0.5 text-xs font-mono font-medium rounded bg-slate-800 text-slate-400 border border-slate-700">
-            0 / 10 URLs
+          <span id="url-count-badge" class="px-2.5 py-0.5 text-xs font-mono font-bold rounded bg-crypt-900 text-slate-400 border border-crypt-700">
+            0 / 10 TARGETS SUMMONED
           </span>
-          <button id="load-samples-btn" type="button" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 bg-slate-800/80 hover:bg-slate-800 px-2 py-1 rounded border border-slate-700 transition-colors">
-            Cargar Ejemplos
+          <button id="load-samples-btn" type="button" class="text-xs font-mono font-bold text-blood-500 hover:text-white bg-blood-950/80 hover:bg-blood-900 px-3 py-1 rounded border border-blood-800 transition-all uppercase tracking-wider">
+            SUMMON SAMPLES
           </button>
-          <button id="clear-btn" type="button" class="text-xs font-mono text-slate-400 hover:text-slate-200 bg-slate-800/80 hover:bg-slate-800 px-2 py-1 rounded border border-slate-700 transition-colors">
-            Limpiar
+          <button id="clear-btn" type="button" class="text-xs font-mono text-slate-400 hover:text-white bg-crypt-900 hover:bg-crypt-800 px-3 py-1 rounded border border-crypt-700 transition-colors uppercase">
+            PURGE
           </button>
         </div>
       </div>
@@ -134,90 +156,94 @@
         <textarea
           id="url-input"
           rows="6"
-          class="w-full bg-[#060a12] border border-slate-800 rounded-md p-3 text-xs sm:text-sm font-mono text-slate-100 placeholder-slate-600 focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 transition-all resize-y leading-relaxed"
-          placeholder="https://ejemplo1.com&#10;https://servidor-php.org&#10;app.dominio.net&#10;https://portal-legacy.es"
+          class="w-full bg-[#030207] border border-crypt-800 rounded-md p-3.5 text-xs sm:text-sm font-mono text-slate-100 placeholder-slate-700 focus:ring-1 focus:ring-blood-500 focus:border-blood-500 transition-all resize-y leading-relaxed tracking-wide"
+          placeholder="https://victim-server.com&#10;https://rotting-legacy.net&#10;target-portal.org&#10;https://consecrated-node.io"
           spellcheck="false"
         ></textarea>
       </div>
 
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-4 pt-3 border-t border-slate-800/80">
-        <div class="text-[11px] font-mono text-slate-400 flex items-center gap-2">
-          <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 text-[10px]">Ctrl + Enter</kbd>
-          <span>para iniciar de forma rápida. HEAD fallback a GET con inspección de 3xx.</span>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-4 pt-3.5 border-t border-crypt-800">
+        <div class="text-[11px] font-mono text-slate-500 flex items-center gap-2">
+          <kbd class="px-1.5 py-0.5 rounded bg-crypt-900 border border-crypt-700 text-slate-300 text-[10px]">CTRL + ENTER</kbd>
+          <span>to unleash the audit ritual. Low-overhead HEAD with GET fallback &amp; 3xx inspection.</span>
         </div>
 
         <button
           id="audit-btn"
           type="button"
           disabled
-          class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded bg-cyan-600 hover:bg-cyan-500 active:bg-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-cyan-950 shrink-0 cursor-pointer"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded bg-gradient-to-r from-blood-600 to-blood-500 hover:from-blood-500 hover:to-blood-600 active:bg-blood-900 disabled:opacity-40 disabled:cursor-not-allowed text-white font-mono text-xs font-black uppercase tracking-widest transition-all shadow-lg shadow-blood-950/60 shrink-0 cursor-pointer border border-blood-500/50"
         >
-          <svg id="btn-icon" class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <svg id="btn-icon" class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           <svg id="btn-spinner" class="animate-spin -ml-1 mr-2 h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-          <span id="btn-text">Iniciar Auditoría</span>
+          <span id="btn-text">EXECUTE RITUAL</span>
         </button>
       </div>
     </section>
 
     <!-- Metrics Summary Deck (Hidden initially) -->
-    <section id="metrics-deck" class="hidden grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+    <section id="metrics-deck" class="hidden grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
       <!-- Total Audited -->
-      <div class="bg-slate-900/60 border border-slate-800 rounded p-3 font-mono">
-        <div class="text-[11px] text-slate-400 font-medium">TOTAL AUDITADOS</div>
-        <div id="metric-total" class="text-xl sm:text-2xl font-bold text-white mt-1">0</div>
+      <div class="bg-[#080710] border border-crypt-800 rounded p-4 font-mono shadow-md">
+        <div class="text-[11px] text-slate-400 font-bold tracking-wider uppercase">SUMMONED SOULS</div>
+        <div id="metric-total" class="text-2xl sm:text-3xl font-black text-white mt-1">0</div>
       </div>
       <!-- Vulnerable -->
-      <div class="bg-slate-900/60 border border-red-900/60 rounded p-3 font-mono">
-        <div class="text-[11px] text-red-400 font-medium flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-          VULNERABLES
+      <div class="bg-blood-950/50 border border-blood-600 rounded p-4 font-mono shadow-md box-neon-blood">
+        <div class="text-[11px] text-blood-500 font-black tracking-wider uppercase flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-blood-500 animate-occult-pulse"></span>
+          CONDEMNED (VULN)
         </div>
-        <div id="metric-vuln" class="text-xl sm:text-2xl font-bold text-red-400 mt-1">0</div>
+        <div id="metric-vuln" class="text-2xl sm:text-3xl font-black text-blood-500 mt-1 neon-blood">0</div>
       </div>
       <!-- Mitigated by WAF -->
-      <div class="bg-slate-900/60 border border-amber-900/60 rounded p-3 font-mono">
-        <div class="text-[11px] text-amber-400 font-medium flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-          MITIGADOS (WAF)
+      <div class="bg-hellfire-950/50 border border-hellfire-400/80 rounded p-4 font-mono shadow-md box-neon-amber">
+        <div class="text-[11px] text-hellfire-400 font-black tracking-wider uppercase flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-hellfire-400"></span>
+          WARDED (WAF)
         </div>
-        <div id="metric-mitigated" class="text-xl sm:text-2xl font-bold text-amber-400 mt-1">0</div>
+        <div id="metric-mitigated" class="text-2xl sm:text-3xl font-black text-hellfire-400 mt-1 neon-amber">0</div>
       </div>
       <!-- Patched -->
-      <div class="bg-slate-900/60 border border-emerald-900/60 rounded p-3 font-mono">
-        <div class="text-[11px] text-emerald-400 font-medium flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-          PARCHEADOS
+      <div class="bg-toxic-950/50 border border-toxic-400/80 rounded p-4 font-mono shadow-md box-neon-toxic">
+        <div class="text-[11px] text-toxic-400 font-black tracking-wider uppercase flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-toxic-400"></span>
+          CONSECRATED
         </div>
-        <div id="metric-patched" class="text-xl sm:text-2xl font-bold text-emerald-400 mt-1">0</div>
+        <div id="metric-patched" class="text-2xl sm:text-3xl font-black text-toxic-400 mt-1 neon-toxic">0</div>
       </div>
       <!-- Opaque / Not PHP -->
-      <div class="bg-slate-900/60 border border-slate-800 rounded p-3 font-mono col-span-2 sm:col-span-1">
-        <div class="text-[11px] text-purple-400 font-medium">OPACO / NO PHP</div>
-        <div id="metric-opaque" class="text-xl sm:text-2xl font-bold text-purple-300 mt-1">0</div>
+      <div class="bg-eldritch-950/50 border border-eldritch-400/70 rounded p-4 font-mono shadow-md col-span-2 sm:col-span-1 box-neon-purple">
+        <div class="text-[11px] text-purple-400 font-black tracking-wider uppercase flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+          SHROUDED / VOID
+        </div>
+        <div id="metric-opaque" class="text-2xl sm:text-3xl font-black text-purple-300 mt-1 neon-purple">0</div>
       </div>
     </section>
 
-    <!-- Empty State Placeholder -->
-    <section id="empty-state" class="border border-dashed border-slate-800 rounded-lg p-10 text-center bg-slate-900/20">
-      <div class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center mx-auto mb-3 text-slate-500">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+    <!-- Empty Catacomb State Placeholder -->
+    <section id="empty-state" class="border border-dashed border-red-950/80 rounded-lg p-12 text-center bg-black/40">
+      <div class="w-16 h-16 rounded-full bg-crypt-900 border border-blood-900/60 flex items-center justify-center mx-auto mb-3 text-blood-500 text-3xl font-gothic animate-occult-pulse shadow-lg shadow-blood-950">
+        ☠
       </div>
-      <h3 class="font-mono text-sm font-semibold text-slate-300">Esperando lista de objetivos</h3>
-      <p class="text-xs font-mono text-slate-500 mt-1 max-w-md mx-auto">
-        Introduce hasta 10 URLs o pulsa "Cargar Ejemplos" para ejecutar la verificación de cabeceras, versiones y perímetros.
+      <h3 class="font-gothic text-base font-bold text-slate-200 tracking-wider">THE CATACOMB IS DORMANT</h3>
+      <p class="text-xs font-mono text-slate-500 mt-1.5 max-w-md mx-auto">
+        Supply up to 10 URLs or invoke "SUMMON SAMPLES" to commence passive header divination, version extraction, and perimeter ward detection.
       </p>
     </section>
 
     <!-- Results Table Section (Hidden initially) -->
-    <section id="results-section" class="hidden bg-slate-900/60 border border-slate-800 rounded-lg overflow-hidden shadow-lg flex flex-col">
+    <section id="results-section" class="hidden bg-[#080710]/90 border border-crypt-800 rounded-lg overflow-hidden shadow-2xl flex flex-col">
       <!-- Table Action Bar -->
-      <div class="p-3.5 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-950/50">
+      <div class="p-4 border-b border-crypt-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-black/70">
         <div class="flex items-center gap-2">
-          <span class="font-mono text-xs font-bold text-slate-200 uppercase tracking-wider">
-            Telemetría de Auditoría
+          <span class="font-gothic text-sm font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+            <span class="text-blood-500">☩</span>
+            <span>NECROMANTIC TELEMETRY</span>
           </span>
-          <span id="results-count-badge" class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-800 text-slate-400 border border-slate-700">
-            0 resultados
+          <span id="results-count-badge" class="px-2.5 py-0.5 rounded text-[11px] font-mono bg-crypt-900 text-slate-400 border border-crypt-700">
+            0 souls
           </span>
         </div>
 
@@ -227,22 +253,22 @@
             <input
               id="search-input"
               type="text"
-              placeholder="Buscar URL / WAF..."
-              class="bg-[#060a12] border border-slate-800 rounded px-2.5 py-1 text-xs font-mono text-slate-200 placeholder-slate-500 w-36 sm:w-48 focus:border-cyan-500"
+              placeholder="Filter souls or perimeters..."
+              class="bg-[#030207] border border-crypt-800 rounded px-3 py-1.5 text-xs font-mono text-slate-200 placeholder-slate-600 w-40 sm:w-56 focus:border-blood-500"
             />
           </div>
 
           <!-- Status Filter -->
           <select
             id="filter-status"
-            class="bg-[#060a12] border border-slate-800 rounded px-2.5 py-1 text-xs font-mono text-slate-200 focus:border-cyan-500"
+            class="bg-[#030207] border border-crypt-800 rounded px-3 py-1.5 text-xs font-mono text-slate-200 focus:border-blood-500"
           >
-            <option value="ALL">Todos los Estados</option>
-            <option value="Vulnerable">Vulnerables</option>
-            <option value="Mitigated by WAF">Mitigados (WAF)</option>
-            <option value="Patched">Parcheados</option>
-            <option value="Opaque">Opacos (PHP)</option>
-            <option value="Not PHP">No PHP</option>
+            <option value="ALL">All Statuses</option>
+            <option value="Vulnerable">Vulnerable (Condemned)</option>
+            <option value="Mitigated by WAF">Mitigated by WAF (Warded)</option>
+            <option value="Patched">Patched (Consecrated)</option>
+            <option value="Opaque">Opaque (Shrouded)</option>
+            <option value="Not PHP">Not PHP (Untouched)</option>
           </select>
 
           <!-- Export CSV Button -->
@@ -250,10 +276,10 @@
             id="export-csv-btn"
             type="button"
             disabled
-            class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 active:bg-slate-900 border border-slate-700 text-xs font-mono text-slate-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded bg-crypt-900 hover:bg-crypt-800 active:bg-black border border-blood-900 text-xs font-mono font-bold text-slate-200 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all uppercase tracking-wider shadow-sm"
           >
-            <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            Exportar CSV
+            <svg class="w-3.5 h-3.5 text-blood-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            EXPORT CSV
           </button>
         </div>
       </div>
@@ -262,16 +288,16 @@
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
           <thead>
-            <tr class="border-b border-slate-800 bg-[#090d16] text-[11px] font-mono text-slate-400 uppercase tracking-wider select-none">
-              <th scope="col" class="px-4 py-2.5 w-10">#</th>
-              <th scope="col" class="px-4 py-2.5">URL Objetivo</th>
-              <th scope="col" class="px-4 py-2.5">Estado Detectado</th>
-              <th scope="col" class="px-4 py-2.5">Versión PHP</th>
-              <th scope="col" class="px-4 py-2.5">Perímetros / WAF</th>
-              <th scope="col" class="px-4 py-2.5">Código HTTP</th>
+            <tr class="border-b border-crypt-800 bg-[#040308] text-[11px] font-mono text-slate-400 uppercase tracking-widest select-none">
+              <th scope="col" class="px-4 py-3 w-10">#</th>
+              <th scope="col" class="px-4 py-3">TARGET SOUL (URL)</th>
+              <th scope="col" class="px-4 py-3">DETECTED STATUS</th>
+              <th scope="col" class="px-4 py-3">EXPOSED PHP</th>
+              <th scope="col" class="px-4 py-3">WARDING PERIMETERS</th>
+              <th scope="col" class="px-4 py-3">HTTP CODE</th>
             </tr>
           </thead>
-          <tbody id="results-tbody" class="divide-y divide-slate-800/60">
+          <tbody id="results-tbody" class="divide-y divide-crypt-800/80">
             <!-- Table rows populated dynamically by app.js -->
           </tbody>
         </table>
@@ -280,15 +306,16 @@
 
   </main>
 
-  <!-- Sysadmin Terminal Footer -->
-  <footer class="border-t border-slate-800/80 bg-[#070b12] py-4 text-xs font-mono text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+  <!-- Gothic Necro Footer -->
+  <footer class="border-t border-crypt-800 bg-[#030206] py-5 text-xs font-mono text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
       <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
-        <span>PHP2Shell Passive Auditor &bull; CVE-2026-109618 & CVE-2026-109619</span>
+        <span class="w-2 h-2 rounded-full bg-blood-500 animate-occult-pulse"></span>
+        <span class="font-gothic text-slate-300 font-bold">PHP2SHELL CATACOMB AUDITOR</span>
+        <span>&bull; CVE-2026-109618 &amp; CVE-2026-109619</span>
       </div>
       <div>
-        <span>Cloudflare Pages &amp; Pages Functions Native Runtime</span>
+        <span>Cloudflare Pages &amp; Pages Functions Native Edge Runtime</span>
       </div>
     </div>
   </footer>

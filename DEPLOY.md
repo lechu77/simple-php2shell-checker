@@ -1,78 +1,70 @@
-# Guía de Despliegue en Cloudflare Pages
+# Cloudflare Pages Deployment Guide
 
-Esta guía detalla los métodos disponibles para desplegar **simple-php2shell-checker** en Cloudflare Pages manteniendo operativas las funciones edge (`/functions/api/check.js`).
-
----
-
-## Requisitos Previos
-
-- Cuenta gratuita o de pago en [Cloudflare](https://dash.cloudflare.com/).
-- Repositorio en GitHub/GitLab (para despliegue continuo) o [Node.js](https://nodejs.org/) v18+ instalado (para despliegue vía CLI).
+This guide details the deployment methods for **simple-php2shell-checker** to Cloudflare Pages while ensuring the edge functions (`/functions/api/check.js`) operate seamlessly.
 
 ---
 
-## Método 1: Despliegue Automático vía Git (Recomendado)
+## Prerequisites
 
-Cada vez que hagas `git push` a tu rama principal (`main`), Cloudflare compilará y desplegará tu aplicación automáticamente.
+- A free or paid [Cloudflare](https://dash.cloudflare.com/) account.
+- Git repository hosted on GitHub/GitLab (for continuous deployment) or [Node.js](https://nodejs.org/) v18+ (for CLI deployment).
 
-1. **Accede al panel de Cloudflare**:
-   - Entra en [Cloudflare Dashboard](https://dash.cloudflare.com/).
-   - En el menú lateral izquierdo, ve a **Workers & Pages** -> **Overview**.
-   - Haz clic en **Create application** y selecciona la pestaña **Pages**.
-   - Haz clic en **Connect to Git**.
+---
 
-2. **Selecciona tu repositorio**:
-   - Conecta tu cuenta de GitHub/GitLab y busca el repositorio `simple-php2shell-checker`.
-   - Haz clic en **Begin setup**.
+## Method 1: Automatic Git Deployment (Recommended)
 
-3. **Configuración de compilación (Build Settings)**:
-   - **Project name**: `simple-php2shell-checker` (o el nombre que desees).
+Every `git push` to your default branch (`main`) will trigger an automatic build and deployment.
+
+1. **Access the Cloudflare Dashboard**:
+   - Go to [Cloudflare Dashboard](https://dash.cloudflare.com/).
+   - In the left sidebar, navigate to **Workers & Pages** -> **Overview**.
+   - Click **Create application** and select the **Pages** tab.
+   - Click **Connect to Git**.
+
+2. **Select Repository**:
+   - Connect your GitHub/GitLab account and choose `simple-php2shell-checker`.
+   - Click **Begin setup**.
+
+3. **Build Settings**:
+   - **Project name**: `simple-php2shell-checker`.
    - **Production branch**: `main`.
-   - **Framework preset**: `None` (no se requiere framework ni build step).
-   - **Build command**: *(dejar completamente vacío)*.
+   - **Framework preset**: `None` (no build step required).
+   - **Build command**: *(leave completely empty)*.
    - **Build output directory**: `public`.
-   - **Root directory**: *(dejar vacío o `/`)*.
+   - **Root directory**: `/` *(or leave blank)*.
 
-4. **Variables de entorno y compatibilidad**:
-   - No se requieren variables de entorno obligatorias para el modo básico.
-   - Cloudflare Pages detectará automáticamente la carpeta `/functions/` en la raíz del proyecto y creará la ruta `/api/check`.
+4. **Edge Functions Routing**:
+   - Cloudflare Pages automatically detects the root `/functions/` directory and mounts `/api/check`.
 
-5. **Guardar y desplegar**:
-   - Haz clic en **Save and Deploy**.
-   - En aproximadamente 30-45 segundos tendrás tu URL pública activa (ej. `https://simple-php2shell-checker.pages.dev`).
+5. **Save and Deploy**:
+   - Click **Save and Deploy**.
+   - Within ~30 seconds, your public URL will be live (e.g. `https://simple-php2shell-checker.pages.dev`).
 
 ---
 
-## Método 2: Despliegue Directo vía Wrangler CLI
+## Method 2: Direct CLI Deployment via Wrangler
 
-Si prefieres desplegar directamente desde tu terminal sin vincular Git a Cloudflare:
+Deploy directly from your terminal without linking Git to Cloudflare:
 
-1. **Iniciar sesión en Cloudflare**:
+1. **Authenticate Wrangler**:
    ```bash
    npx wrangler login
    ```
-   *Se abrirá una ventana de navegador para autorizar a Wrangler en tu cuenta de Cloudflare.*
 
-2. **Desplegar el proyecto**:
+2. **Deploy**:
    ```bash
    npm run deploy
    ```
-   O directamente:
+   Or directly:
    ```bash
    npx wrangler pages deploy public --project-name=simple-php2shell-checker
    ```
 
-3. **Seleccionar entorno**:
-   - Wrangler te preguntará si deseas crear el proyecto nuevo (si es la primera vez) y si es para `Production` o `Preview`.
-   - Al finalizar, devolverá la URL asignada.
-
 ---
 
-## Método 3: Despliegue Automatizado con GitHub Actions
+## Method 3: GitHub Actions CI/CD Pipeline
 
-Para desplegar automáticamente en cada commit mediante GitHub Actions:
-
-Crea el archivo `.github/workflows/deploy.yml`:
+To deploy automatically on push via GitHub Actions, add `.github/workflows/deploy.yml`:
 
 ```yaml
 name: Deploy to Cloudflare Pages
@@ -88,7 +80,7 @@ jobs:
       contents: read
       deployments: write
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -96,7 +88,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Run Test Suite
+      - name: Execute Test Suite
         run: npm test
 
       - name: Deploy to Cloudflare Pages
@@ -107,39 +99,24 @@ jobs:
           command: pages deploy public --project-name=simple-php2shell-checker
 ```
 
-*(Configura los secrets `CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID` en **Settings -> Secrets and variables -> Actions** en tu repositorio de GitHub).*
-
 ---
 
-## Verificación y Pruebas Locales antes de Desplegar
+## Local Development and Verification
 
-Puedes ejecutar y depurar localmente la aplicación estática junto con las Pages Functions:
-
-1. **Lanzar el entorno de desarrollo local de Cloudflare**:
+1. **Start local emulation server**:
    ```bash
    npm run dev
    ```
-   Esto levantará el servidor en `http://localhost:8788`.
+   Access the frontend at `http://localhost:8788`.
 
-2. **Probar el endpoint de la API con cURL**:
+2. **Test API endpoint via cURL**:
    ```bash
    curl -s -X POST http://localhost:8788/api/check \
      -H "Content-Type: application/json" \
-     -d '{"urls": ["https://www.php.net"]}' | jq .
+     -d '{"urls": ["https://www.php.net"]}'
    ```
 
-3. **Ejecutar la suite de tests unitarios**:
+3. **Run unit tests**:
    ```bash
    npm test
    ```
-
----
-
-## Resolución de Problemas (Troubleshooting)
-
-- **Error 404 al llamar a `/api/check`**:
-  - Asegúrate de que el **Build output directory** esté configurado como `public` y que la carpeta `functions/` esté situada en la raíz del repositorio (`functions/api/check.js`).
-- **Límite de subrequests en Cloudflare Workers**:
-  - El plan gratuito de Cloudflare Pages Functions permite hasta 50 subrequests por invocación. El auditor procesa un máximo de 10 URLs con un pool de concurrencia de 4 para operar siempre dentro de los límites seguros.
-- **Error CORS**:
-  - `functions/api/check.js` incluye cabeceras `Access-Control-Allow-Origin: *` y soporte para peticiones `OPTIONS`, lo que permite probar la API tanto en el mismo dominio como desde clientes externos.
