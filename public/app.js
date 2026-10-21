@@ -1,6 +1,6 @@
 /**
- * PHP2Shell Crypt - Frontend Vanilla JavaScript
- * Gothic Neon Occult Black-Box Telemetry Client.
+ * PHP2Shell Auditor - Frontend Vanilla JavaScript
+ * High-Density Dark Gothic Neon Cybersecurity Telemetry Client.
  */
 
 // Application State
@@ -36,7 +36,7 @@ const resultsTbody = document.getElementById('results-tbody');
 const resultsCountBadge = document.getElementById('results-count-badge');
 const emptyState = document.getElementById('empty-state');
 
-// Sample Target URLs for immediate divination
+// Sample Target URLs for testing
 const SAMPLE_URLS = [
   'https://httpbin.org/status/200',
   'https://www.php.net',
@@ -62,12 +62,12 @@ function getParsedUrls() {
 function updateUrlCounter() {
   const urls = getParsedUrls();
   const count = urls.length;
-  urlCountBadge.textContent = `${count} / 10 TARGETS SUMMONED`;
+  urlCountBadge.textContent = `${count} / 10 URLS LOADED`;
 
   if (count > 10) {
     urlCountBadge.className = 'px-2.5 py-0.5 text-xs font-mono font-bold rounded bg-blood-950 text-blood-500 border border-blood-600 shadow-md shadow-blood-950 animate-pulse';
     auditBtn.disabled = true;
-    showAlert('Target quota exceeded: Maximum of 10 souls permitted per ritual.', 'error');
+    showAlert('Maximum of 10 URLs allowed per batch.', 'error');
   } else {
     urlCountBadge.className = count === 0
       ? 'px-2.5 py-0.5 text-xs font-mono font-medium rounded bg-crypt-900 text-slate-500 border border-crypt-800'
@@ -110,12 +110,12 @@ function setLoading(loading) {
     urlInput.disabled = true;
     btnSpinner.classList.remove('hidden');
     btnIcon.classList.add('hidden');
-    btnText.textContent = 'DIVINING TARGETS...';
+    btnText.textContent = 'AUDITING TARGETS...';
   } else {
     urlInput.disabled = false;
     btnSpinner.classList.add('hidden');
     btnIcon.classList.remove('hidden');
-    btnText.textContent = 'EXECUTE RITUAL';
+    btnText.textContent = 'START AUDIT';
     updateUrlCounter();
   }
 }
@@ -129,31 +129,31 @@ function getStatusBadge(status) {
       return `
         <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-black bg-blood-950 text-blood-500 border border-blood-600 shadow-lg shadow-blood-950 neon-blood">
           <span class="w-1.5 h-1.5 rounded-full bg-blood-500 animate-occult-pulse"></span>
-          ☠ VULNERABLE
+          VULNERABLE
         </span>`;
     case 'Mitigated by WAF':
       return `
         <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-black bg-hellfire-950 text-hellfire-400 border border-hellfire-400/80 shadow-lg shadow-hellfire-950 neon-amber">
           <svg class="w-3.5 h-3.5 text-hellfire-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          🛡 MITIGATED BY WAF
+          MITIGATED BY WAF
         </span>`;
     case 'Patched':
       return `
         <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-black bg-toxic-950 text-toxic-400 border border-toxic-400/80 shadow-lg shadow-toxic-950 neon-toxic">
           <svg class="w-3.5 h-3.5 text-toxic-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-          ☩ PATCHED
+          PATCHED
         </span>`;
     case 'Opaque':
       return `
         <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-black bg-eldritch-950 text-purple-400 border border-eldritch-400/80 shadow-lg shadow-eldritch-950 neon-purple">
           <svg class="w-3.5 h-3.5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg>
-          👁 OPAQUE (PHP)
+          OPAQUE (PHP)
         </span>`;
     case 'Not PHP':
     default:
       return `
         <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-medium bg-crypt-900 text-slate-400 border border-crypt-700">
-          🕇 NOT PHP
+          NOT PHP
         </span>`;
   }
 }
@@ -189,14 +189,14 @@ function renderResultsTable() {
     return matchesStatus && matchesSearch;
   });
 
-  resultsCountBadge.textContent = `${filtered.length} of ${currentResults.length} souls`;
+  resultsCountBadge.textContent = `${filtered.length} of ${currentResults.length} targets`;
   resultsTbody.innerHTML = '';
 
   if (filtered.length === 0) {
     resultsTbody.innerHTML = `
       <tr>
         <td colspan="6" class="px-4 py-8 text-center text-xs font-mono text-slate-600 bg-black/50">
-          No condemned souls match current filter criteria.
+          No targets match current filter criteria.
         </td>
       </tr>`;
     return;
@@ -212,7 +212,7 @@ function renderResultsTable() {
 
     const versionDisplay = row.phpVersion
       ? `<span class="px-2 py-0.5 rounded font-bold ${row.isEol ? 'bg-blood-950 text-blood-500 border border-blood-800 neon-blood' : 'bg-crypt-900 text-slate-200 border border-crypt-700'}">${escapeHtml(row.phpVersion)}${row.isEol ? ' (EOL)' : ''}</span>`
-      : '<span class="text-slate-600 italic">Hidden / Masked</span>';
+      : '<span class="text-slate-600 italic">Hidden / Not exposed</span>';
 
     const httpBadgeClass = typeof row.httpStatus === 'number' && row.httpStatus >= 200 && row.httpStatus < 300
       ? 'text-toxic-400'
@@ -269,7 +269,7 @@ function escapeHtml(str) {
  */
 function exportResultsToCsv() {
   if (!currentResults || currentResults.length === 0) {
-    showAlert('No divination telemetry available to export.', 'warning');
+    showAlert('No audit results available to export.', 'warning');
     return;
   }
 
@@ -306,7 +306,7 @@ function exportResultsToCsv() {
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
   const a = document.createElement('a');
   a.href = url;
-  a.download = `php2shell-crypt-audit-${timestamp}.csv`;
+  a.download = `php2shell-audit-${timestamp}.csv`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -320,12 +320,12 @@ async function runAudit() {
   const urls = getParsedUrls();
 
   if (urls.length === 0) {
-    showAlert('Please provide at least one target URL to begin divination.', 'warning');
+    showAlert('Please provide at least one target URL to audit.', 'warning');
     return;
   }
 
   if (urls.length > 10) {
-    showAlert('Target quota exceeded: Maximum of 10 souls permitted per ritual.', 'error');
+    showAlert('Maximum of 10 URLs allowed per batch.', 'error');
     return;
   }
 
@@ -362,7 +362,7 @@ async function runAudit() {
     updateMetricsDeck(data.summary);
     renderResultsTable();
   } catch (err) {
-    showAlert(`Ritual execution error: ${err.message}`, 'error');
+    showAlert(`Audit execution error: ${err.message}`, 'error');
   } finally {
     setLoading(false);
   }
